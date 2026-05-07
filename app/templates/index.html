@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Risk Intelligence Platform</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            line-height: 1.5;
+            color: #444;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            margin-top: 24px;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #1f4e79;
+            color: white;
+        }
+
+        .error {
+            padding: 12px;
+            background: #fdeaea;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            color: #7a1f1f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Insurance Risk Intelligence Platform</h1>
+
+        <p>
+            This application allows a customer to request an insurance quote risk review.
+            The system uses machine learning output from obesity, inactivity, and tobacco
+            datasets to recommend a business strategy, pricing approach, underwriting action,
+            and product direction.
+        </p>
+
+        {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <form action="/quote" method="POST">
+            <label for="name">Customer Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="123 Main Street">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="555-555-5555">
+
+            <label for="state">State</label>
+            <select id="state" name="state" required>
+                <option value="">Select a state</option>
+
+                {% for state in states %}
+                    <option value="{{ state }}">{{ state }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Request Quote Risk Review</button>
+        </form>
+    </div>
+</body>
+</html>

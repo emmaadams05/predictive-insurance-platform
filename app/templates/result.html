@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quote Risk Review Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #e6f5ea;
+            color: #185c2b;
+        }
+
+        .failure {
+            background: #fdeaea;
+            color: #7a1f1f;
+        }
+
+        .section {
+            margin-top: 28px;
+        }
+
+        .row {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 28px;
+            color: #1f4e79;
+            font-weight: bold;
+        }
+
+        pre {
+            background: #f2f2f2;
+            padding: 12px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% if success %}
+            <div class="status success">{{ message }}</div>
+        {% else %}
+            <div class="status failure">{{ message }}</div>
+        {% endif %}
+
+        {% if party_id %}
+            <div class="row">
+                <span class="label">Saved Party ID:</span> {{ party_id }}
+            </div>
+        {% endif %}
+
+        {% if customer %}
+            <div class="section">
+                <h2>Customer Information</h2>
+
+                <div class="row">
+                    <span class="label">Name:</span> {{ customer.name }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Address:</span> {{ customer.address }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Email:</span> {{ customer.email }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Phone:</span> {{ customer.phone }}
+                </div>
+
+                <div class="row">
+                    <span class="label">State:</span> {{ customer.state }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if recommendation %}
+            <div class="section">
+                <h2>ML-Generated Recommendation</h2>
+
+                <div class="row">
+                    <span class="label">State:</span> {{ recommendation.State }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Obesity Rate:</span> {{ recommendation.Obesity }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Physical Inactivity Rate:</span> {{ recommendation.Inactivity }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Tobacco Use Rate:</span> {{ recommendation.Tobacco }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Recommended Business Strategy:</span>
+                    {{ recommendation.RecommendedBusinessStrategy }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Pricing Recommendation:</span>
+                    {{ recommendation.PricingRecommendation }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Underwriting Recommendation:</span>
+                    {{ recommendation.UnderwritingRecommendation }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Market Segment:</span>
+                    {{ recommendation.MarketSegment }}
+                </div>
+
+                <div class="row">
+                    <span class="label">Product Recommendation:</span>
+                    {{ recommendation.ProductRecommendation }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if error %}
+            <div class="section">
+                <h2>Error Details</h2>
+                <pre>{{ error }}</pre>
+            </div>
+        {% endif %}
+
+        <a href="/">Submit Another Quote Request</a>
+    </div>
+</body>
+</html>

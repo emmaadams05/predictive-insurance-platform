@@ -105,9 +105,9 @@ def assign_business_strategy(row):
 
 
 def build_combined_dataset():
-    obesity_raw = load_csvs_from_folder("./data/obesity")
-    inactivity_raw = load_csvs_from_folder("./data/inactivity")
-    tobacco_raw = load_csvs_from_folder("./data/tobacco")
+    obesity_raw = load_csvs_from_folder("./health_data/obesity")
+    inactivity_raw = load_csvs_from_folder("./health_data/inactivity")
+    tobacco_raw = load_csvs_from_folder("./health_data/tobacco")
 
     obesity = clean_health_dataset(obesity_raw, "Obesity")
     inactivity = clean_health_dataset(inactivity_raw, "Inactivity")
