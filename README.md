@@ -18,7 +18,7 @@ predictive-insurange-platform/
 ├── database/
 │   └── schema.sql
 │
-├── data/
+├── health_data/
 ├── models/
 ├── output/
 │
