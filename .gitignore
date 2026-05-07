@@ -1,0 +1,5 @@
+lib
+include
+pyvenv.cfg
+bin
+.ds_store
