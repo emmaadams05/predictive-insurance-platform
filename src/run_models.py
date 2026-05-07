@@ -9,8 +9,8 @@ from kmeans_model import run_kmeans
 def main():
     print("Building combined health and business decision dataset...")
 
-    os.makedirs("output", exist_ok=True)
-    os.makedirs("models", exist_ok=True)
+    os.makedirs("../output", exist_ok=True)
+    os.makedirs("../models", exist_ok=True)
 
     df = build_combined_dataset()
 
