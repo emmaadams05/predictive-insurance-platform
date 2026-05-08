@@ -9,8 +9,13 @@ from kmeans_model import run_kmeans
 def main():
     print("Building combined health and business decision dataset...")
 
-    os.makedirs("../output", exist_ok=True)
-    os.makedirs("../models", exist_ok=True)
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    output_dir = os.path.join(BASE_DIR, "output")
+    models_dir = os.path.join(BASE_DIR, "models")
+
+    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(models_dir, exist_ok=True)
 
     df = build_combined_dataset()
 
@@ -23,11 +28,11 @@ def main():
     df, decision_tree_model = run_decision_tree(df)
     df, kmeans_model = run_kmeans(df)
 
-    output_file = os.path.join("output", "business_decision_model_results.csv")
+    output_file = os.path.join(output_dir, "business_decision_model_results.csv")
     df.to_csv(output_file, index=False)
 
-    decision_tree_path = os.path.join("models", "decision_tree_model.joblib")
-    kmeans_path = os.path.join("models", "kmeans_model.joblib")
+    decision_tree_path = os.path.join(models_dir, "decision_tree_model.joblib")
+    kmeans_path = os.path.join(models_dir, "kmeans_model.joblib")
 
     joblib.dump(decision_tree_model, decision_tree_path)
     joblib.dump(kmeans_model, kmeans_path)
